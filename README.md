@@ -1,10 +1,10 @@
-# 📝 CRUD Notes App
+# CRUD Notes App
 
 A complete, beginner-friendly full-stack web application demonstrating **CRUD operations**, **JWT Authentication**, and **MVC architecture** using Node.js, Express.js, PostgreSQL, and Sequelize ORM.
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 
 This is an educational project that covers the full lifecycle of building a modern web application:
 
@@ -18,23 +18,23 @@ Users can register, log in, and manage their own personal notes (create, read, u
 
 ---
 
-## ✨ Features
+## Features
 
-- ✅ User Registration with validation
-- ✅ User Login with JWT token generation
-- ✅ Password hashing with bcrypt
-- ✅ Protected API routes (JWT middleware)
-- ✅ Full CRUD for Notes: Create, Read, Update, Delete
-- ✅ User-scoped data (users only access their own notes)
-- ✅ Logout (clears token from localStorage)
-- ✅ Token persistence (stays logged in on page refresh)
-- ✅ Input validation (both client-side and server-side)
-- ✅ Clean error messages
-- ✅ MVC architecture
+-  User Registration with validation
+-  User Login with JWT token generation
+-  Password hashing with bcrypt
+-  Protected API routes (JWT middleware)
+-  Full CRUD for Notes: Create, Read, Update, Delete
+-  User-scoped data (users only access their own notes)
+-  Logout (clears token from localStorage)
+-  Token persistence (stays logged in on page refresh)
+-  Input validation (both client-side and server-side)
+-  Clean error messages
+-  MVC architecture
 
 ---
 
-## 📁 Folder Structure
+##  Folder Structure
 
 ```
 project/
@@ -85,7 +85,7 @@ project/
 
 ---
 
-## 🛠️ Installation
+##  Installation
 
 ### Prerequisites
 
@@ -120,7 +120,7 @@ This installs all packages listed in `package.json`:
 
 ---
 
-## 🐘 PostgreSQL Setup
+##  PostgreSQL Setup
 
 ### Step 1: Start PostgreSQL
 
@@ -151,7 +151,7 @@ createdb -U postgres crud_db
 
 ---
 
-## ⚙️ Environment Configuration
+##  Environment Configuration
 
 Open the `.env` file and update the values to match your setup:
 
@@ -175,11 +175,11 @@ JWT_EXPIRES_IN=24h
 BCRYPT_SALT_ROUNDS=10
 ```
 
-> ⚠️ **Security**: Never commit the `.env` file to Git. It's already in `.gitignore`.
+>  **Security**: Never commit the `.env` file to Git. It's already in `.gitignore`.
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 ### Development Mode (with auto-restart)
 
@@ -203,7 +203,7 @@ You'll be redirected to the **login page** automatically.
 
 ---
 
-## 🔗 API Endpoints
+##  API Endpoints
 
 ### Authentication
 
@@ -211,19 +211,19 @@ You'll be redirected to the **login page** automatically.
 |--------|-----------------------|--------|--------------------------------------|
 | POST   | `/api/auth/register`  | Public | Register a new user                  |
 | POST   | `/api/auth/login`     | Public | Login and receive a JWT token        |
-| GET    | `/api/auth/me`        | 🔒 JWT | Get current logged-in user info      |
+| GET    | `/api/auth/me`        |    JWT | Get current logged-in user info      |
 
 ### Items (Notes/Tasks)
 
 | Method | Endpoint          | Access | Description                          |
 |--------|-------------------|--------|--------------------------------------|
-| GET    | `/api/items`      | 🔒 JWT | Get all items for the logged-in user |
-| GET    | `/api/items/:id`  | 🔒 JWT | Get a single item by ID              |
-| POST   | `/api/items`      | 🔒 JWT | Create a new item                    |
-| PUT    | `/api/items/:id`  | 🔒 JWT | Update an existing item              |
-| DELETE | `/api/items/:id`  | 🔒 JWT | Delete an item                       |
+| GET    | `/api/items`      |    JWT | Get all items for the logged-in user |
+| GET    | `/api/items/:id`  |    JWT | Get a single item by ID              |
+| POST   | `/api/items`      |    JWT | Create a new item                    |
+| PUT    | `/api/items/:id`  |    JWT | Update an existing item              |
+| DELETE | `/api/items/:id`  |    JWT | Delete an item                       |
 
-> **🔒 JWT** routes require the `Authorization: Bearer <token>` header.
+> ** JWT** routes require the `Authorization: Bearer <token>` header.
 
 ### Example API Request (using curl)
 
@@ -251,7 +251,7 @@ curl http://localhost:3000/api/items \
 
 ---
 
-## 🔐 Authentication Flow
+##  Authentication Flow
 
 ```
 1. User fills Register form
@@ -277,7 +277,7 @@ curl http://localhost:3000/api/items \
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ### Users Table
 
@@ -305,35 +305,35 @@ curl http://localhost:3000/api/items \
 
 ---
 
-## ⚠️ Common Errors & Solutions
+##  Common Errors & Solutions
 
-### ❌ `SequelizeConnectionRefusedError: connect ECONNREFUSED`
+###  `SequelizeConnectionRefusedError: connect ECONNREFUSED`
 **Cause**: PostgreSQL is not running.  
 **Fix**: Start PostgreSQL: `sudo service postgresql start`
 
-### ❌ `password authentication failed for user "postgres"`
+###  `password authentication failed for user "postgres"`
 **Cause**: Wrong password in `.env`.  
 **Fix**: Update `DB_PASSWORD` in `.env` with your correct PostgreSQL password.
 
-### ❌ `database "crud_db" does not exist`
+###  `database "crud_db" does not exist`
 **Cause**: The database hasn't been created yet.  
 **Fix**: Run `createdb -U postgres crud_db`
 
-### ❌ `Error: JWT_SECRET is not defined`
+###  `Error: JWT_SECRET is not defined`
 **Cause**: `.env` file is missing or not loaded.  
 **Fix**: Make sure `.env` exists in the project root and has `JWT_SECRET` set.
 
-### ❌ `Cannot GET /api/items` returns 401
+###  `Cannot GET /api/items` returns 401
 **Cause**: Missing or expired JWT token.  
 **Fix**: Log in again to get a fresh token. Include `Authorization: Bearer <token>` in the request.
 
-### ❌ `nodemon` not found
+###  `nodemon` not found
 **Cause**: Dev dependencies not installed.  
 **Fix**: Run `npm install`
 
 ---
 
-## 🎓 Key Concepts Covered
+##  Key Concepts Covered
 
 | Concept | Where to Look |
 |---------|---------------|
@@ -350,6 +350,3 @@ curl http://localhost:3000/api/items \
 
 ---
 
-## 📝 License
-
-This project is for educational purposes. Feel free to use and modify it.
