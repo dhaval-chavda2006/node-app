@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – CRUD Notes App</title>
+  <meta name="description" content="Login to your Notes app to manage your personal notes and tasks." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- Auth wrapper centers the card vertically and horizontally -->
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- Logo / Icon -->
+      <div class="page-logo">📝</div>
+
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Login to access your notes</p>
+
+      <!-- Message box: shown on error or success (controlled by JS) -->
+      <div id="message" class="message" role="alert"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Your password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          Login
+        </button>
+
+      </form>
+
+      <div class="auth-link">
+        Don't have an account? <a href="/register">Register here</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load the login JavaScript -->
+  <script src="/js/login.js"></script>
+</body>
+</html>

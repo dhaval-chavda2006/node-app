@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – CRUD Notes App</title>
+  <meta name="description" content="Create a free account to start managing your personal notes and tasks." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <div class="page-logo">📝</div>
+
+      <h1>Create Account</h1>
+      <p class="subtitle">Start managing your notes today</p>
+
+      <!-- Message box for errors/success -->
+      <div id="message" class="message" role="alert"></div>
+
+      <!-- Registration Form -->
+      <form id="registerForm" novalidate>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="John Doe"
+            required
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Minimum 4 characters"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          Create Account
+        </button>
+
+      </form>
+
+      <div class="auth-link">
+        Already have an account? <a href="/login">Login here</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load the register JavaScript -->
+  <script src="/js/register.js"></script>
+</body>
+</html>

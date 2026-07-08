@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – CRUD Notes App</title>
+  <meta name="description" content="Your personal notes dashboard. Create, view, edit, and delete your notes." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="/dashboard" class="navbar-brand">📝 Notes App</a>
+      <div class="navbar-user">
+        <!-- Populated by dashboard.js after fetching /api/auth/me -->
+        Welcome, <span id="usernameDisplay">...</span>
+        <button class="btn btn-danger btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container-wide">
+
+    <!-- Dashboard header with title and "New Note" button -->
+    <div class="dashboard-header">
+      <h2>My Notes</h2>
+      <button class="btn btn-secondary" id="openCreateModalBtn">
+        + New Note
+      </button>
+    </div>
+
+    <!-- Global message for dashboard actions (create/update/delete feedback) -->
+    <div id="dashboardMessage" class="message" role="alert"></div>
+
+    <!-- Notes Grid — populated dynamically by dashboard.js -->
+    <div class="items-grid" id="itemsGrid">
+      <!-- Note cards are rendered here by JavaScript -->
+      <!-- If no notes, an empty-state message is shown -->
+    </div>
+
+  </main>
+
+  <!-- ===== CREATE / EDIT MODAL ===== -->
+  <!--
+    This single modal is reused for BOTH creating and editing notes.
+    dashboard.js changes its title and behavior depending on the action.
+  -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+
+      <div class="modal-header">
+        <h3 id="modalTitle">New Note</h3>
+        <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <!-- Hidden input to store the ID of the item being edited -->
+      <input type="hidden" id="editItemId" />
+
+      <!-- Modal message for form-level errors -->
+      <div id="modalMessage" class="message" role="alert"></div>
+
+      <div class="form-group">
+        <label for="itemTitle">Title <span style="color:var(--danger)">*</span></label>
+        <input
+          type="text"
+          id="itemTitle"
+          placeholder="Enter note title..."
+          maxlength="200"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="itemDescription">Description <span style="color:var(--text-secondary); font-weight:400;">(optional)</span></label>
+        <textarea
+          id="itemDescription"
+          placeholder="Enter note description..."
+          maxlength="5000"
+        ></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveItemBtn" style="width:auto;">
+          Save Note
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+  <div class="modal-overlay" id="deleteModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal" style="max-width:380px;">
+
+      <div class="modal-header">
+        <h3>Delete Note</h3>
+        <button class="modal-close" id="closeDeleteModalBtn">&times;</button>
+      </div>
+
+      <p style="color:var(--text-secondary); margin-bottom: 8px;">
+        Are you sure you want to delete this note? This action <strong>cannot be undone</strong>.
+      </p>
+
+      <!-- Hidden input to store the ID of the item to delete -->
+      <input type="hidden" id="deleteItemId" />
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn" style="width:auto;">
+          Yes, Delete
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load the dashboard JavaScript -->
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
